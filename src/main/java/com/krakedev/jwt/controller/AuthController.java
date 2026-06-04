@@ -25,6 +25,15 @@ public class AuthController {
     public AuthController(UsuarioService usuarioService) {
         this.usuarioService = usuarioService;
     }
+    
+    @PostMapping("/registrar")
+    public ResponseEntity<Usuario> registrar(@RequestBody Usuario usuario) {
+
+        Usuario usuarioGuardado = usuarioService.registrar(usuario);
+
+        return ResponseEntity.ok(usuarioGuardado);
+    }
+
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody Usuario usuarioLogin) {
